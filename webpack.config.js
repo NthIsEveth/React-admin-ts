@@ -13,6 +13,8 @@ const config = {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: '[name].[hash].bundle.js', // 这里设置一个带hash的文件名
+    chunkFilename: '[name].[hash].bundle.js',
   },
   devServer: {
     host: "localhost",
@@ -44,7 +46,7 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        type: 'asset/resource'
       },
 
       // Add your rules for custom modules here
