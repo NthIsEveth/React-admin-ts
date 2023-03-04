@@ -1,31 +1,14 @@
 import { Menu, MenuProps } from "antd"
-import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
+type MenuItems = Required<MenuProps>['items'];
 
-import MenuItem from "antd/es/menu/MenuItem";
-
-type MenuItem = Required<MenuProps>['items'][number];
-const menuList: MenuProps['items'] = [
-  {
-    key: 1,
-    icon: <AppstoreOutlined/>,
-    label: '配置管理',
-  }
-];
 const menuClick = (e) => {
-  console.log(e)
+  console.log(e.item.props.path);
 }
-export const SideMenu:React.FC = () => (
+export const SideMenu:React.FC<{ menus: MenuItems}> = (props) => (
   <Menu
-    items={ menuList }
+    items={ props.menus }
     theme="dark"
     onClick={ menuClick }
+    mode="inline"
   />
 )
